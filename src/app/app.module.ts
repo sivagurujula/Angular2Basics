@@ -7,19 +7,28 @@ import { AppComponent } from './app.component';
 import { AuthorComponent } from './author.component';
 import {AutoGrowDirective} from './autogrow.directive';
 import { HeroComponent } from './hero/hero.component';
-import { HeroDetailsComponent} from './hero-details/hero-detatils.component'
+import { HeroDetailsComponent} from './hero-details/hero-detatils.component';
 import {HeroService} from './hero/hero.service';
+import { AppRoutingModule } from './app.routing.module';
+import { DashboardComponent } from 'app/dashboard/dashboard.component';
+import {HttpClientModule} from '@angular/common/http';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService } from './in-memory-data.service';
+
 
 @NgModule({
   declarations: [
-    AppComponent, AuthorComponent, AutoGrowDirective, HeroComponent, HeroDetailsComponent
+    AppComponent,  AuthorComponent, AutoGrowDirective, HeroComponent, HeroDetailsComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [HeroService],
-  bootstrap: [AppComponent, AuthorComponent, HeroComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
