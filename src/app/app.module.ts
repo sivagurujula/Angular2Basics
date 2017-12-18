@@ -14,21 +14,29 @@ import { DashboardComponent } from 'app/dashboard/dashboard.component';
 import {HttpClientModule} from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
+import {MessageService} from './message.service';
+import { HeroSearchComponent } from 'app/hero-search/hero-search.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,  AuthorComponent, AutoGrowDirective, HeroComponent, HeroDetailsComponent,
-    DashboardComponent
+    DashboardComponent,HeroSearchComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
+// and returns simulated server responses.
+// Remove it when a real server is ready to receive requests.
+HttpClientInMemoryWebApiModule.forRoot(
+  InMemoryDataService, { dataEncapsulation: false }
+)
   ],
-  providers: [HeroService],
+  providers: [HeroService,MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
