@@ -16,27 +16,28 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
 import {MessageService} from './message.service';
 import { HeroSearchComponent } from 'app/hero-search/hero-search.component';
-
+import {XLOSService} from './xlos/xlos.service';
+import { TaskDetailsComponent } from 'app/xlos/task-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,  AuthorComponent, AutoGrowDirective, HeroComponent, HeroDetailsComponent,
-    DashboardComponent,HeroSearchComponent
+    DashboardComponent,HeroSearchComponent,TaskDetailsComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     AppRoutingModule,
-    HttpClientModule,
+    HttpClientModule// ,
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
 // and returns simulated server responses.
 // Remove it when a real server is ready to receive requests.
-HttpClientInMemoryWebApiModule.forRoot(
-  InMemoryDataService, { dataEncapsulation: false }
-)
+// HttpClientInMemoryWebApiModule.forRoot(
+  // InMemoryDataService, { dataEncapsulation: false }
+// )
   ],
-  providers: [HeroService,MessageService],
+  providers: [HeroService,MessageService,XLOSService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
